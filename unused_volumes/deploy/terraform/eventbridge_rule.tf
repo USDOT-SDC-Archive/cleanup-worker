@@ -6,7 +6,7 @@ data "archive_file" "lambda_zip" {
 
 resource "aws_lambda_function" "cleanup_worker_lambda" {
     filename = "cleanup_worker.zip"
-    function_name = "${local.environment}-cleanup-worker2"
+    function_name = "${local.environment}-cleanup-worker"
     role = aws_iam_role.cleanup_worker_role.arn
     handler = "lambda.lambda_handler"
     timeout = 30
@@ -22,13 +22,13 @@ resource "aws_lambda_function" "cleanup_worker_lambda" {
 }
 
 resource "aws_iam_role" "cleanup_worker_role" {
-    name = "${local.environment}-cleanup-worker2-role"
+    name = "${local.environment}-cleanup-worker-role"
     assume_role_policy = file("assume_role_policy.json")
     tags = local.global_tags
 }
 
 resource "aws_iam_role_policy" "cleanup_worker_policy" {
-    name="${local.environment}-cleanup-worker2-policy"
+    name="${local.environment}-cleanup-worker-policy"
     role = aws_iam_role.cleanup_worker_role.id
     policy = file("cleanup_worker_policy.json")
 }
@@ -37,7 +37,7 @@ resource "aws_iam_role_policy" "cleanup_worker_policy" {
 resource "aws_cloudwatch_event_rule" "cleanup_worker_scheduler" {
     name = "${local.environment}-cleanup-worker-scheduler"
     description = "Periodically invokes cleanup-worker lambda function"
-    schedule_expression = "cron(45 * * * ? *)"
+    schedule_expression = "cron(30 6 * * ? *)"
     tags = local.global_tags
 }
 
