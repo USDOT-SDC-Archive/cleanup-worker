@@ -2,6 +2,9 @@
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=usdot-jpo-sdc_sdc-dot-webportal&metric=alert_status)](https://sonarcloud.io/dashboard?id=usdot-jpo-sdc_sdc-dot-webportal)
 [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=usdot-jpo-sdc_sdc-dot-webportal&metric=coverage)](https://sonarcloud.io/dashboard?id=usdot-jpo-sdc_sdc-dot-webportal)
 
+# Archived
+This repo has been archived. Some of the useful functions have move to: [USDOT-SDC/dev-utils/resource-cleanup](https://github.com/USDOT-SDC/dev-utils/tree/main/resource-cleanup)
+
 # cleanup-worker
 Utilities to identify and delete unused AWS resources within the US DOT Secure Data Commons (SDC) ecosystem.
 
